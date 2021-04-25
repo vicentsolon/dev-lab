@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="count">0</div>
+    <button class="btn">click</button>
+    <script>
+        const count = document.querySelector(".count");
+        const btn = document.querySelector(".btn");
+        
+        function throttle(func, wait) {
+            let startTime = 0;
+            return function (e) {
+                let endTime = new Date().getTime();
+                if (endTime - startTime > wait) {
+                    test.apply(this, [e]);
+                    startTime = endTime;
+                }
+            }
+        }
+
+        function test(e) {
+            console.log(this, e.target);
+            count.innerHTML = parseInt(count.innerHTML) + 1;
+        }
+
+        btn.onclick = throttle(test, 1000)
+    </script>
+</body>
+</html>
