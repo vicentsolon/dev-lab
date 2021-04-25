@@ -10,4 +10,3 @@ def disk_usage(path):
 
     return total
 
-disk_usage("C:\\Users\\时序\\Desktop\\毕业设计")
