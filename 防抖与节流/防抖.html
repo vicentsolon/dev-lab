@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .container {
+            width: 200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .container input {
+            width: 200px;
+            height: 30px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        .container .delayShow {
+            display: none;
+            width: 200px;
+            background-color: #008c8c;
+            margin-top: -5px;
+            height: 50px;
+            text-align: left;
+            padding: 5px;
+            box-sizing: border-box;
+            color: #fff;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>防抖</h1>
+        <input type="text" >
+        <ul class="delayShow">
+        </ul>
+    </div>
+    
+    <script>
+        const input = document.querySelector("input[type='text']");
+        const oUl = document.querySelector(".delayShow");
+        let timer = null;
+        function debounce(handle, delay) {
+            return function () {
+                let _self = this;
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    test.call(_self)
+                }, delay);
+            }
+        }
+        function test() {
+            oUl.innerHTML = `<li>${this.value}</li>`;
+            if (this.value == "") {
+                oUl.style.display = "none";
+            } else {
+                oUl.style.display = "block";
+            }
+        }
+        input.oninput = debounce(test, 1000);
+    </script>
+</body>
+</html>
